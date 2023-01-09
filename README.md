@@ -59,5 +59,4 @@ has_one    :delivery_location
 | telephone_number   | string     | null: false |
 | buy                | references | null: false, foreign_key: true |
 
-
-belongs_to :bye
+belongs_to :buy
