@@ -3,11 +3,11 @@ FactoryBot.define do
     nickname              {'test'}
     email                 {'test@example'}
     password              {'000000'}
-    password_confirmation {password}
-    family_name           {"honjo"}
-    first_name            {"bingo"}
-    family_name_kana      {"honjo"}
-    first_name_kana       {"bingo"}
+    password_confirmation {'000000'}
+    family_name           {"本城"}
+    first_name            {"敏吾"}
+    family_name_kana      {"ホンジョウ"}
+    first_name_kana       {"ビンゴ"}
     birthday              {"1998-02-20"}
   end
 end
