@@ -102,3 +102,7 @@
   text-decoration: none;
   color: #333333;
 }
+
+.nav__right{
+  display: flex;
+}
