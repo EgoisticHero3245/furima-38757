@@ -15,7 +15,6 @@ class Item < ApplicationRecord
 
   #空の投稿を保存できないようにする
   with_options presence: true do
-    validates :user_id
     validates :item_name
     validates :image
     validates :price

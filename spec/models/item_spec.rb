@@ -9,15 +9,14 @@ describe '商品の出品登録' do
   context '出品登録ができるとき'
     it '全ての入力事項が、存在すれば登録できる' do
       expect(@item).to be_valid
-      end
     end
+  end
   
   context '出品ができないとき' do
     it 'ユーザー登録している人でないと出品できない' do
-      @item.user_id = nil
+      @item.user = nil
       @item.valid?
-      binding.pry
-      expect(@item.errors.full_messages).to include("User can't be blank")
+      expect(@item.errors.full_messages).to include("User must exist")
     end
     it '１枚画像がないと出品できない' do
       @item.image = nil
