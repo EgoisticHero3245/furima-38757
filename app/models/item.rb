@@ -11,7 +11,9 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   #300円以上かつ9,999,999円以下かつ、半角数字のみ
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  with_options numericality: { other_than: 1 } do
+  end
 
   #空の投稿を保存できないようにする
   with_options presence: true do
@@ -24,8 +26,7 @@ class Item < ApplicationRecord
     validates :delivery_charge_id
     validates :shipper_id
     validates :shipping_date_id
-  end
-
+    end
 
   #ジャンルの選択が「---」の時は保存できないようにする
   validates :state_id, numericality: { other_than: 1 , message: "can't be blank"}
