@@ -7,15 +7,17 @@ class Item < ApplicationRecord
   belongs_to :shipping_date
 
   belongs_to :user
-  has_one    :buy
-  has_one_attached :item_image
+  # has_one    :buy
+  has_one_attached :image
 
   #300円以上かつ9,999,999円以下かつ、半角数字のみ
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   #空の投稿を保存できないようにする
   with_options presence: true do
+    validates :user_id
     validates :item_name
+    validates :image
     validates :price
     validates :explanation_text
     validates :category_id
