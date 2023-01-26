@@ -76,7 +76,7 @@ RSpec.describe BuyForm, type: :model do
       end
 
       it '都道府県に「---」が選択されている場合は購入できない' do
-        @buy_form.shipper_id = nil
+        @buy_form.shipper_id = 1
         @buy_form.valid?
         expect(@buy_form.errors.full_messages).to include("Shipper can't be blank")
       end
