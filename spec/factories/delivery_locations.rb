@@ -1,14 +1,12 @@
 FactoryBot.define do
-  factory :buy do
+  factory :delivery_location do
 
-    user            {'本城'}
-    item
     postal_code     {'123-4567'}
     shipper_id      {'2'}
-    municipalities  {'茅ヶ崎市'}
+    municipalities  {'豊島区'}
     address         {'鏑木2-3'}
     building_name   {'大河ビル'}
     telephone_number{'01234567890'}
-    
+    token           {'tok000o0o0000o0'}
   end
 end
