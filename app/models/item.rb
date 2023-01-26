@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_date
 
   belongs_to :user
-  # has_one    :buy
+  has_one    :buy
   has_one_attached :image
 
   #300円以上かつ9,999,999円以下かつ、半角数字のみ
