@@ -74,6 +74,31 @@ RSpec.describe BuyForm, type: :model do
         @buy_form.valid?
         expect(@buy_form.errors.full_messages).to include("Token can't be blank")
       end
+
+      it '都道府県に「---」が選択されている場合は購入できない' do
+        @buy_form.shipper_id = nil
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Shipper can't be blank")
+      end
+
+      it '電話番号が9桁以下では購入できない' do
+        @buy_form.telephone_number = 12345678
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Telephone number is invalid")
+      end
+      
+      it '電話番号が12桁以上では購入できない' do
+        @buy_form.telephone_number = 123456789012
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Telephone number is invalid")
+      end
+
+      it '電話番号に半角数字以外が含まれている場合は購入できない（※半角数字以外が一文字でも含まれていれば良い）' do
+        @buy_form.telephone_number = 012-3456-7890
+        @buy_form.valid?
+        expect(@buy_form.errors.full_messages).to include("Telephone number is invalid")
+      end
+
     end
   end
 end

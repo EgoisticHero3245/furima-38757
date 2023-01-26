@@ -1,5 +1,4 @@
 const pay = () => {
-  debugger;
   const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY)// PAY.JPテスト公開鍵
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
@@ -15,7 +14,6 @@ const pay = () => {
     e.preventDefault();
 
     payjp.createToken(expiryElement).then((response) => {
-      console.log(response)
       if (response.error) {
       } else {
         const token = response.id;
