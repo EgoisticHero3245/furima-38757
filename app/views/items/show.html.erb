@@ -16,24 +16,22 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        ¥ 999,999,999
+        <%= @item.price %>円
       </span>
       <span class="item-postage">
         <%= @item.delivery_charge.name %>
       </span>
     </div>
 
-    <%# ログインしていれば表示 %>
-    <% if user_signed_in? %>
+    
+    <% if user_signed_in? && @item.order.nil? %>
       <% if current_user.id == @item.user_id %> 
     <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
 
     <% else %>
-    <%# 商品が売れていない場合 %>
     <%= link_to "購入画面に進む", item_delivery_locations_path(@item), class:"item-red-btn"%>
-    <%# //商品が売れていない場合 %>
       <% end %>
     <% end %>
 

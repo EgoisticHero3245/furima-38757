@@ -1,6 +1,7 @@
 class DeliveryLocationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :redirect, only: [:index, :create]
 
   def index
     @delivery_location = BuyForm.new
@@ -35,5 +36,11 @@ def pay_item
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
 end
+
+  def redirect
+    if (@item.user_id == current_user.id) || (@item.buy != nil)
+      redirect_to root_path
+    end
+  end
 
 end
