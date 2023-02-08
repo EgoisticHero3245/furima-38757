@@ -76,3 +76,5 @@ gem 'payjp'
 gem 'faker'
 
 gem "aws-sdk-s3", require: false
+
+gem 'rails-i18n'
